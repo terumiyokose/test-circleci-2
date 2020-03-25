@@ -1,9 +1,10 @@
 version: 2.1
 
-
 workflows:
-  context: test
-
+  deploy:
+    jobs:
+      - deploy: # このjobはfiltersによりmasterブランチ「のみ」で実行される
+          context: test # ここで先程作成したcontextのAWS認証情報を指定
 jobs:
   build:
     docker:
@@ -22,4 +23,5 @@ jobs:
           command: |
             #npm install --save serverless-python-requirements
             sls deploy 
-  
+ 
+        
