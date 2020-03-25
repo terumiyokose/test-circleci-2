@@ -22,6 +22,7 @@ workflows:
   deploy:
     jobs:
       - deploy: # このjobはfiltersによりmasterブランチ「のみ」で実行される
+          name: Deploy
           context: test # ここで先程作成したcontextのAWS認証情報を指定
           filters:
             branches:
