@@ -14,5 +14,5 @@ jobs:
       - deploy: 
           name: Deploy
           command: |
-            npm install --save serverless-python-requirements
+            #npm install --save serverless-python-requirements
             sls deploy 
