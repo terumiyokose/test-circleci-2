@@ -2,9 +2,6 @@ version: 2.1
 
 workflows:
   deploy:
-    jobs:
-      - deploy: # このjobはfiltersによりmasterブランチ「のみ」で実行される
-          context: test # ここで先程作成したcontextのAWS認証情報を指定
 jobs:
   build:
     docker:
