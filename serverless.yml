@@ -62,8 +62,8 @@ functions:
     cd-test-lambda:
       handler: handler.main
 
-plugins:
-  -serverless-python-requirements
+#plugins:
+  #-serverless-python-requirements
 
 custom:
   pythonRequirements:
