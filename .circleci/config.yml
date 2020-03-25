@@ -1,18 +1,21 @@
-version: 2
+version: 2.1
+
+orbs:
+  python: circleci/python@0.2.1
+
 jobs:
-  build:
-    docker:
-      - image: circleci/python:3.7.6-stretch-node-browsers
-    working_directory: ~/repo
+  build-and-test:
+    executor: python/default
     steps:
       - checkout
+      - python/load-cache
+      - python/install-deps
+      - python/save-cache
       - run:
-          name: Install Serverless CLI and dependencies
-          command: |
-            sudo npm install -g serverless
-            npm install 
-      - deploy: 
-          name: Deploy
-          command: |
-            npm install --save serverless-python-requirements
-            sls deploy 
+          command: ./manage.py test
+          name: Test
+
+workflows:
+  main:
+    jobs:
+      - build-and-test
