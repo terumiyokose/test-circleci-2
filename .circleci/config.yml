@@ -1,6 +1,7 @@
-version: 2.1 
+name: Deploy
+ version: 2.1 
 
-jobs:
+ jobs:
   build:
     docker:
       - image: circleci/python:3.7.6-stretch-node-browsers
@@ -14,18 +15,9 @@ jobs:
             npm install 
       - deploy: 
           name: Deploy
+          context: test
           command: |
             #npm install --save serverless-python-requirements
             sls deploy 
-            
-workflows:
-  deploy:
-    jobs:
-      - deploy: # このjobはfiltersによりmasterブランチ「のみ」で実行される
-          name: deploy
-          context: test # ここで先程作成したcontextのAWS認証情報を指定
-          filters:
-            branches:
-              only:
-                - master
+        
         
