@@ -12,6 +12,7 @@ jobs:
             sudo npm install -g serverless
             npm install 
       - deploy: 
+          context: test 
           name: Deploy
           command: |
             #npm install --save serverless-python-requirements
