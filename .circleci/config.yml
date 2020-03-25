@@ -1,5 +1,4 @@
-version: 2.1
-
+version: 2.1 
 
 jobs:
   build:
@@ -19,7 +18,7 @@ jobs:
             #npm install --save serverless-python-requirements
             sls deploy 
             
- workflows:
+workflows:
   deploy:
     jobs:
       - deploy: # このjobはfiltersによりmasterブランチ「のみ」で実行される
