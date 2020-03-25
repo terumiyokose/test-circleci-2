@@ -1,4 +1,11 @@
 version: 2.1
+
+workflows:
+  deploy:
+    jobs:
+        - deploy: # このjobはfiltersによりmasterブランチ「のみ」で実行される
+          context: test
+
 jobs:
   build:
     docker:
@@ -12,8 +19,8 @@ jobs:
             sudo npm install -g serverless
             npm install 
       - deploy: 
-          context: test 
           name: Deploy
           command: |
             #npm install --save serverless-python-requirements
             sls deploy 
+  
